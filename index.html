@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharmacist & Product Manager Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom color palette for a professional, health-tech feel */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa; /* Light Gray Background */
+        }
+        .text-primary { color: #2a61a0; } /* Deep Professional Blue */
+        .bg-primary { background-color: #2a61a0; }
+        .bg-secondary { background-color: #e3eef9; } /* Very Light Blue for Hero */
+        /* Subtle hover effect for cards */
+        .card-hover:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1); 
+        }
+        /* Modal styling for hidden/visible states */
+        .modal { display: none; }
+        .modal-open { 
+            display: flex; 
+            /* Ensures smooth transition into view */
+            animation: fadeIn 0.3s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-xl font-extrabold text-primary tracking-wider">Your Name</a>
+            <div class="space-x-6 flex">
+                <a href="#portfolio" class="text-gray-600 hover:text-primary font-medium transition duration-200">Portfolio</a>
+                <a href="#about" class="text-gray-600 hover:text-primary font-medium transition duration-200">About</a>
+                <a href="https://www.linkedin.com/in/yourprofile" target="_blank" class="text-gray-600 hover:text-primary font-medium transition duration-200">LinkedIn</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section (Value Proposition) -->
+    <header class="bg-secondary py-20 md:py-32 rounded-b-xl shadow-inner">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold text-primary leading-tight">
+                Pharmacist $\cap$ Product Manager
+            </h1>
+            <p class="mt-4 text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+                I leverage **clinical expertise** and **data-driven strategy** to build innovative health tech products, focusing on remote patient monitoring and geriatric care.
+            </p>
+            <a href="#portfolio" class="mt-8 inline-block px-10 py-4 rounded-full text-white bg-primary font-semibold text-lg hover:bg-blue-700 transition duration-300 shadow-lg hover:shadow-xl">
+                View Case Studies
+            </a>
+        </div>
+    </header>
+
+    <!-- Portfolio Section (Case Studies) -->
+    <section id="portfolio" class="py-16 md:py-24">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 border-b-2 border-primary/20 pb-2 inline-block mx-auto mb-10">
+                Case Studies & Projects
+            </h2>
+            
+            <div id="portfolio-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio cards will be injected here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="bg-white py-16 md:py-24 shadow-inner">
+        <div class="container mx-auto px-4">
+            <div class="md:flex items-center gap-12">
+                <div class="md:w-1/3 mb-8 md:mb-0 text-center">
+                    <!-- Placeholder image - Replace URL with your professional headshot -->
+                    <img src="https://placehold.co/250x250/2a61a0/ffffff?text=Your+Photo" alt="Professional Photo" class="rounded-full mx-auto shadow-2xl w-48 h-48 object-cover border-4 border-primary/50">
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Bridging Clinical Care and Code</h2>
+                    <p class="mt-4 text-lg text-gray-600 leading-relaxed">
+                        As a licensed pharmacist with a passion for technology, I saw firsthand the gaps in patient care that could be solved with smarter, more connected solutions. My journey into product management began with a desire to build those solutions. I specialize in the intersection of clinical science and user-centric design, creating digital health products that not only work but are also intuitive and valuable for both patients and healthcare providers. My goal is to use my unique perspective to drive meaningful health outcomes through technology.
+                    </p>
+                    <div class="mt-6">
+                        <a href="mailto:your.email@example.com" class="inline-block px-6 py-2 border-2 border-primary text-primary font-semibold rounded-full hover:bg-primary hover:text-white transition duration-200">
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm">Built with Tailwind CSS. &copy; 2024 Your Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Detailed Case Studies -->
+    <div id="project-modal" class="modal fixed inset-0 bg-black bg-opacity-80 z-50 justify-center items-center p-4">
+        <div class="bg-white rounded-xl shadow-2xl max-w-5xl w-full max-h-[95vh] overflow-y-auto relative p-8 md:p-12">
+            <!-- Close button -->
+            <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition text-4xl font-light" onclick="closeModal()">
+                &times;
+            </button>
+            <h3 id="modal-title" class="text-3xl md:text-4xl font-extrabold text-primary mb-2 border-b pb-2"></h3>
+            <p id="modal-problem" class="text-lg text-gray-600 mb-8"></p>
+            
+            <div class="grid md:grid-cols-2 gap-8 space-y-4 md:space-y-0">
+                <!-- Role -->
+                <div class="bg-secondary p-6 rounded-lg shadow-inner">
+                    <h4 class="text-xl font-bold text-primary mb-2">My Role as PM</h4>
+                    <p id="modal-role" class="text-gray-700"></p>
+                </div>
+
+                <!-- Solution -->
+                <div class="bg-secondary p-6 rounded-lg shadow-inner">
+                    <h4 class="text-xl font-bold text-primary mb-2">Proposed Solution</h4>
+                    <p id="modal-solution" class="text-gray-700"></p>
+                </div>
+                
+                <!-- Metrics -->
+                <div class="bg-white p-6 rounded-lg border-2 border-gray-100 shadow">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">Key Metrics & Outcomes</h4>
+                    <p id="modal-metrics" class="text-gray-700"></p>
+                </div>
+
+                <!-- Persona -->
+                <div class="bg-white p-6 rounded-lg border-2 border-gray-100 shadow">
+                    <h4 class="text-xl font-bold text-gray-800 mb-2">User Persona</h4>
+                    <p id="modal-persona" class="text-gray-700"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Portfolio Data and Interaction -->
+    <script>
+        // Define the project data structure
+        const projects = [
+            {
+                id: 'chf-monitoring',
+                title: 'VitalSigns: Reducing CHF Readmissions with Wearables',
+                shortDesc: 'Leveraging wearable tech for continuous patient monitoring to detect early symptoms of Congestive Heart Failure.',
+                problem: 'High rates of hospital readmission for CHF patients are driven by a lack of continuous, at-home monitoring and early symptom detection. This leads to poor patient outcomes and significant costs for healthcare providers.',
+                role: 'Conducted user interviews with geriatric cardiologists and nurses. Defined the MVP (Minimum Viable Product), prioritizing fluid retention monitoring. Designed the data architecture and created a go-to-market strategy targeting ACOs.',
+                solution: 'A smart adhesive patch tracking heart rate, fluid retention (using bioimpedance), and activity levels. Data feeds into an AI-powered care team dashboard, triggering proactive alerts.',
+                metrics: 'Hospital readmission rates for CHF patients (Primary KPI), user retention, and care team response time to alerts. Goal: 10% reduction in readmissions within six months.',
+                persona: 'Meet "Mary," a 72-year-old retired teacher with CHF. She needs a passive, simple device that provides her care team with real-time data to help her remain independent.'
+            },
+            {
+                id: 'dementia-adherence',
+                title: 'AdhereWatch: Improving Medication Adherence in Early-Stage Dementia',
+                shortDesc: 'A strategy using smartwatches to improve medication adherence in a simple way for patients and reassuring for caregivers.',
+                problem: 'Medication non-adherence is a major issue for patients with early-stage dementia, leading to worsened health outcomes and increased caregiver stress. Existing solutions are often intrusive or lack real-time feedback.',
+                role: 'Conducted market research to identify the "passive yet proactive" solution gap. Created a feature roadmap prioritizing non-disruptive haptic alerts and a caregiver-facing compliance log.',
+                solution: 'A non-intrusive smartwatch using gentle haptic feedback and simple visual cues for medication reminders. The patient taps the watch to confirm dose, logging the data in a real-time companion app for the caregiver.',
+                metrics: 'Medication adherence rate (Primary KPI), caregiver reported stress levels, and app ease-of-use scores.',
+                persona: 'Meet "Robert," a 78-year-old with early-stage dementia living with his wife (caregiver). He is easily confused by new routines. The solution must provide his wife with peace of mind.'
+            },
+            {
+                id: 'fall-prevention',
+                title: 'Safeguard: Predictive Fall Reduction System',
+                shortDesc: 'Moving beyond simple detection, this product uses predictive analytics to prevent falls in assisted living facilities before they occur.',
+                problem: 'Falls are a leading cause of injury among older adults. Current solutions are reactive, responding *after* a fall has occurred, rather than proactively preventing it.',
+                role: 'Defined the Product Requirements Document (PRD), focusing on predictive analytics as the core value proposition. Collaborated with data scientists on the ML model and built a per-resident subscription pricing model.',
+                solution: 'A discreet wearable that analyzes gait patterns and balance data using machine learning. The system alerts nurses to residents at high risk, enabling proactive interventions (e.g., physical therapy, mobility aid prescription).',
+                metrics: 'Fall incident rate (Primary KPI), number of high-risk alerts issued, and ROI calculation for the facility (cost savings from fewer falls).',
+                persona: 'Meet "The Assisted Living Administrator," who needs a scalable, easy-to-integrate solution that provides predictive data to justify staffing and prevention resources.'
+            }
+        ];
+
+        const portfolioGrid = document.getElementById('portfolio-grid');
+        const modal = document.getElementById('project-modal');
+
+        // Function to dynamically create portfolio cards
+        function renderPortfolio() {
+            projects.forEach(project => {
+                const card = document.createElement('div');
+                card.className = 'bg-white rounded-xl shadow-lg p-6 cursor-pointer transform transition-all duration-300 card-hover border border-gray-100';
+                card.innerHTML = `
+                    <h3 class="text-xl font-bold text-gray-800">${project.title}</h3>
+                    <p class="mt-2 text-gray-600 line-clamp-3">${project.shortDesc}</p>
+                    <div class="mt-4 inline-block px-4 py-1.5 text-sm font-semibold rounded-full text-primary border border-primary hover:bg-primary/10 transition">
+                        View Case Study
+                    </div>
+                `;
+                // Attach the openModal function to the card click event
+                card.onclick = () => openModal(project);
+                portfolioGrid.appendChild(card);
+            });
+        }
+
+        // Function to open the modal and fill content
+        function openModal(project) {
+            document.getElementById('modal-title').textContent = project.title;
+            document.getElementById('modal-problem').textContent = project.problem;
+            document.getElementById('modal-role').textContent = project.role;
+            document.getElementById('modal-solution').textContent = project.solution;
+            document.getElementById('modal-metrics').textContent = project.metrics;
+            document.getElementById('modal-persona').textContent = project.persona;
+            modal.classList.add('modal-open');
+        }
+
+        // Function to close the modal
+        function closeModal() {
+            modal.classList.remove('modal-open');
+        }
+
+        // Close modal when clicking outside of it (on the dark overlay)
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Initial rendering of the portfolio
+        window.onload = renderPortfolio;
+    </script>
+</body>
+</html>
